@@ -3,7 +3,7 @@ Author - Aditya Mangal
 Date - 27 october 2020
 Purpose - Python mini task
 
-used to scrape images from google 
+#used to scrape images from google 
 
 '''
 
