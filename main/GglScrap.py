@@ -33,6 +33,8 @@ def extract(data, quantity):
     while i < quantity:
         print(f"i is {i}")
         for link in ImgTags:
+            if i==quantity:
+                break
             try:
                 images = link.get('src')
                 ext = images[images.rindex('.'):]
