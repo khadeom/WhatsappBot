@@ -25,7 +25,9 @@ def bot():
     print(incoming_msg)
     responded = False
     if 'search' in incoming_msg:
-        l=incoming_msg.split(" ")
+        l=incoming_msg.split("search")
+
+
         msg.media(extract(" ".join(i for i in l[1:]),10))
         responded = True
     if 'quote' in incoming_msg:
