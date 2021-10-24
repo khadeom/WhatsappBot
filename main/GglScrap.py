@@ -2,6 +2,8 @@ import bs4
 import requests
 import shutil
 import os
+import random
+
 
 # GOOGLE_IMAGE = \
 #     'https://www.google.com/search?site=&tbm=isch&source=hp&biw=1873&bih=990&'
@@ -19,7 +21,7 @@ def extract(data, quantity):
     ImgTags = soup.find_all('img')
     i = 0
     print('Please wait..')
-
+    random.shuffle(ImgTags)
 
     for link in ImgTags:
         try:
