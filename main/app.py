@@ -1,8 +1,9 @@
 from flask import Flask, request
 import requests
 from twilio.twiml.messaging_response import MessagingResponse
-
+from GglScrap import extract
 #print("started")
+
 
 app = Flask(__name__)
 
@@ -23,6 +24,10 @@ def bot():
     msg = resp.message()
     print(incoming_msg)
     responded = False
+    if 'search' in incoming_msg:
+        l=incoming_msg.split(" ")
+        msg.media(extract(" ".join(i for i in l[1:]),10))
+        responded = True
     if 'quote' in incoming_msg:
         # return quote image 
         r = requests.get('https://api.quotable.io/random')
@@ -47,7 +52,7 @@ def bot():
         msg.media('https://picsum.photos/200/300')
         responded = True
     if not responded:
-        msg.body('I only know famous quote and cats, sorry!.')
+        msg.body('I only know famous quote, cats and Search things, sorry!.')
     return str(resp)
 
 if __name__ == '__main__':
